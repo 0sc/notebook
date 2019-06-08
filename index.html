@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+    <script src="wasm_exec.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel='stylesheet' href='style.css'>
+		<script>
+      if (!WebAssembly.instantiateStreaming) { // polyfill
+				WebAssembly.instantiateStreaming = async (resp, importObject) => {
+					const source = await (await resp).arrayBuffer();
+					return await WebAssembly.instantiate(source, importObject);
+				};
+		  }
+
+			const go = new Go();
+			let inst, mod;
+			WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then(
+				async result => {
+				inst = result.instance
+				mod = result.module
+				await go.run(result.instance);
+			});
+    </script>
+  </head>
+  <body>
+    <div>
+      <p id="notification"></p>
+      <button onClick="add(this);" id="new-btn">New Note</button>
+    </div>
+    
+    <main class="row">
+      <div id="notes-listing">
+        <ul id="notes"></ul>
+      </div>
+      <div class="divider"></div>
+      <div id="workspace">
+        <div>
+          <textarea id="notepad"></textarea>
+        </div>
+        <div>
+          <button id="save-btn">Save</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

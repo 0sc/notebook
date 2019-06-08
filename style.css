@@ -1,0 +1,90 @@
+#notes-listing {
+  float: left;
+  width: 30%;
+  display: block;
+  margin: 20px 2%;
+  height: 400px;
+  overflow: scroll;
+}
+
+#notes-listing ul li {
+  list-style:none;
+  padding: 8px 0px;
+  border-bottom: 1px dashed lightgray;
+  height: 13%;
+}
+
+#workspace{
+  float: left;
+  width: 60%;
+  margin: 20px 2%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  #notes-listing, #workspace {
+    width: 100%;
+  }
+}
+
+.divider {
+  float: left;
+  border-left: 1px dotted black; 
+  width: 1%;
+  height: 100%;
+}
+  
+.note-crumbs {
+  font-weight: 200;
+  font-style: italic;
+  font-size: 12px;
+}
+
+#notepad {
+  width: 100%;
+  resize: none;
+  font-size: 14px;
+  font-weight: 500;
+  height: 400px;
+}
+
+.note-heading{
+  float: left;
+  clear: left; 
+  width: 70%; 
+  padding: 0;
+}
+
+button {
+  border: none; 
+  color: white; 
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.edit-btn, .delete-btn, #new-btn{
+  font-size: 150%;
+}
+  
+.delete-btn{
+  color: orangered;
+}
+
+.edit-btn{
+  color: aqua;
+}
+
+#save-btn, #new-btn{
+  background-color: green;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+#new-btn {
+  background-color: DodgerBlue; 
+}
